@@ -3,24 +3,23 @@
 angular.module('myApp.controllers', [])
   .controller('MyCtrl1', ['$scope', function($scope) {
 	  $scope.board1  = [[1,3,6], [2,4,7] , [5,9,8] ] ; 
-	  $scope.SortedArray = [] ; 
-	  $scope.IsFirstClick = 0; 
+	  $scope.SortedArray = [] ;  
 	  $scope.NextElementIndex = 0 ; 
+	  
+	  // populate one dimention array 
 	  for(var i = 0; i < $scope.board1.length; i++) {
 		    var row = $scope.board1[i];
 		    for(var j = 0; j < row.length; j++) {
 		    	$scope.SortedArray.push(row[j]);
-		        /*console.log("row[" + i + "][" + j + "] = " + row[j]);*/
-		       /* console.log($scope.SortedArray) ;*/ 
 		    }
 		  
 		}
-
 	  $scope.SortedArray.sort();
-	  $scope.FirstNum = $scope.SortedArray[0];
+	  
+	  
+  
+	  
 	  $scope.lastElement = $scope.SortedArray[$scope.SortedArray.length - 1];
-	  console.log($scope.FirstNum) ; 
-	  console.log($scope.lastElement) ; 
 	  /*console.log($scope.SortedArray) ;*/
 	  
 	  
@@ -30,7 +29,6 @@ angular.module('myApp.controllers', [])
 		  		" $scope.SortedArray.length " + $scope.SortedArray.length ) ; */
 	  if ($scope.NextElementIndex+1 == $scope.SortedArray.length  )
 	     {   
-	
 		  console.log("you win ") ; 
 		 } 
 	  else  {  
@@ -44,14 +42,21 @@ angular.module('myApp.controllers', [])
 	        
   }
   $scope.NewGame = function () {
+	  shuffle( $scope.SortedArray) ; 
+	  for(var i = 0; i < $scope.board1.length; i++) {
+		    var row = $scope.board1[i];
+		    for(var j = 0; j < row.length; j++) {
+		    var SarrayIndex = i*3 + j ; 	
+		    $scope.board1[i][j] =$scope.SortedArray[SarrayIndex]; 
+		    }
+		}
+	  $scope.SortedArray.sort();
 	  
 	  
-	  
-	  
-	  console.log ( " new game is clicked " ) ; 
- 	  
-	  
-	  
+	  function shuffle(o){ //v1.0
+		    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+		    return o;
+		};	  
   }
   
   
