@@ -67,5 +67,27 @@ angular.module('myApp.controllers', [])
   
   }])
   .controller('MyCtrl2', ['$scope', function($scope) {
+	  $scope.pictures = 0; 
+	  $scope.class_string  = 1;
+	  $scope.pictureClicked = function() {
+		  console.log ("is clicked ") ;
+		  
+		  
+		
+		  
+		  setTimeout(function(){
+			  $scope.$apply(function () {
+					 $scope.class_string  = 'animated flip';
+					 $scope.pictures = $scope.pictures+1;
+		        });
+
+		  }, 50);
+		  $scope.class_string  = '1';
+		  
+		  
+	  }
+	  
+	  
+	  
 
   }]);
