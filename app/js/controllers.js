@@ -83,8 +83,7 @@ angular.module('myApp.controllers', [])
 
 		  }, 50);
 		  $scope.class_string  = '1';
-		  
-		  
+  
 	  }
 	  
 	  
