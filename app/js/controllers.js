@@ -38,6 +38,8 @@ angular.module('myApp.controllers', [])
 		       {$scope.NextElementIndex = $scope.NextElementIndex + 1 ;
 			   console.log("  ok  ") ; 
 			   document.getElementById("okAudio").play() ;
+			   $scope.class_string = 'fadeOout' ;
+			   
 
 		       }
 	       else {
@@ -48,6 +50,7 @@ angular.module('myApp.controllers', [])
 	        
   }
   $scope.NewGame = function () {
+	  $scope.NextElementIndex = 0 ;
 	  $scope.class_string  = 'animated flip';
 	  shuffle( $scope.SortedArray) ; 
 	  for(var i = 0; i < $scope.board1.length; i++) {
@@ -63,7 +66,6 @@ angular.module('myApp.controllers', [])
 		  $scope.$apply(function () {
 				 $scope.class_string  = 'animated flip';
 				 $scope.pictures = $scope.pictures+1;
-				 
 	        });
 
 	  }, 50);
@@ -88,6 +90,7 @@ angular.module('myApp.controllers', [])
 
 	  document.getElementById("okAudio").play() ; 
 
+	  
 	  setTimeout(function(){
 			  $scope.$apply(function () {
 					 $scope.class_string  = 'animated flip';
