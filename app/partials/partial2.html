@@ -1,5 +1,18 @@
 
-
+<div> {{sound_button}} </div>
 <div ng-click="pictureClicked()"  > 
+   
 <img src="img/numbers/number{{pictures}}.jpg"  class="{{class_string}}"  />
+
+<audio id="okAudio" preload="none">
+ <source type="audio/mpeg" src="sounds/ok_button.mp3"/> 
+</audio>
+<audio id="wrongAudio" preload="none">
+ <source type="audio/mpeg" src="sounds/wrong_button.mp3"/> 
+</audio>
+<audio id="finish" preload="none">
+ <source type="audio/mpeg" src="sounds/finish.mp3"/> 
+</audio>
+
+
 </div>

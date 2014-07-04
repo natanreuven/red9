@@ -2,6 +2,8 @@
 
 angular.module('myApp.controllers', [])
   .controller('MyCtrl1', ['$scope', function($scope) {
+	  
+	  
 	  $scope.board1  = [[1,3,6], [2,4,7] , [5,9,8] ] ; 
 	  $scope.SortedArray = [] ;  
 	  $scope.NextElementIndex = 0 ; 
@@ -25,23 +27,28 @@ angular.module('myApp.controllers', [])
 	  
 	  
   $scope.NumberIsClicked = function(obj) {
-/*	  console.log ( " $scope.NextElementIndex " +  $scope.NextElementIndex  + 
-		  		" $scope.SortedArray.length " + $scope.SortedArray.length ) ; */
+	  
 	  if ($scope.NextElementIndex+1 == $scope.SortedArray.length  )
-	     {   
+	     { 
+		  document.getElementById("finish").play() ;
 		  console.log("you win ") ; 
 		 } 
 	  else  {  
 		   if (obj ==  $scope.SortedArray[$scope.NextElementIndex] )  
 		       {$scope.NextElementIndex = $scope.NextElementIndex + 1 ;
-			   console.log("  ok  ") ; }
+			   console.log("  ok  ") ; 
+			   document.getElementById("okAudio").play() ;
+
+		       }
 	       else {
 	    	   console.log(" wrong number  ") 
+	    	   document.getElementById("wrongAudio").play() ;
 	  			}
 	  		}
 	        
   }
   $scope.NewGame = function () {
+	  $scope.class_string  = 'animated flip';
 	  shuffle( $scope.SortedArray) ; 
 	  for(var i = 0; i < $scope.board1.length; i++) {
 		    var row = $scope.board1[i];
@@ -51,6 +58,16 @@ angular.module('myApp.controllers', [])
 		    }
 		}
 	  $scope.SortedArray.sort();
+	 
+	  setTimeout(function(){
+		  $scope.$apply(function () {
+				 $scope.class_string  = 'animated flip';
+				 $scope.pictures = $scope.pictures+1;
+				 
+	        });
+
+	  }, 50);
+	  $scope.class_string  = '1';
 	  
 	  
 	  function shuffle(o){ //v1.0
@@ -62,29 +79,29 @@ angular.module('myApp.controllers', [])
   
   
   
-	  
-  
-  
   }])
-  .controller('MyCtrl2', ['$scope', function($scope) {
+  .controller('MyCtrl2', ['$scope', '$document',  function($scope, $document) {
+	  $scope.sound_button ='ok_button.mp3'
 	  $scope.pictures = 0; 
 	  $scope.class_string  = 1;
 	  $scope.pictureClicked = function() {
-		  console.log ("is clicked ") ;
-		  
-		  
-		
-		  
-		  setTimeout(function(){
+
+	  document.getElementById("okAudio").play() ; 
+
+	  setTimeout(function(){
 			  $scope.$apply(function () {
 					 $scope.class_string  = 'animated flip';
+					
 					 $scope.pictures = $scope.pictures+1;
+					 
 		        });
 
 		  }, 50);
 		  $scope.class_string  = '1';
   
 	  }
+	  
+	  
 	  
 	  
 	  
