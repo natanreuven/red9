@@ -27,7 +27,7 @@ angular.module('myApp.controllers', [])
 	  
 	  
   $scope.NumberIsClicked = function(obj) {
-	  
+	  console.log("obj" + obj)
 	  if ($scope.NextElementIndex+1 == $scope.SortedArray.length  )
 	     { 
 		  document.getElementById("finish").play() ;
@@ -38,7 +38,11 @@ angular.module('myApp.controllers', [])
 		       {$scope.NextElementIndex = $scope.NextElementIndex + 1 ;
 			   console.log("  ok  ") ; 
 			   document.getElementById("okAudio").play() ;
-			   $scope.class_string = 'fadeOout' ;
+			   
+			   var id_button = "click_"+$scope.NextElementIndex ; 
+			   console.log(id_button) ;
+			   document.getElementById(id_button).className = "animated fadeOut";
+
 			   
 
 		       }
