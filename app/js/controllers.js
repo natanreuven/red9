@@ -31,6 +31,9 @@ angular.module('myApp.controllers', [])
 	  if ($scope.NextElementIndex+1 == $scope.SortedArray.length  )
 	     { 
 		  document.getElementById("finish").play() ;
+		  var id_button = "click_"+$scope.SortedArray.length ; 
+		  console.log(id_button) ;
+		  document.getElementById(id_button).className = "animated fadeOutUp";
 		  console.log("you win ") ; 
 		 } 
 	  else  {  
@@ -41,7 +44,7 @@ angular.module('myApp.controllers', [])
 			   
 			   var id_button = "click_"+$scope.NextElementIndex ; 
 			   console.log(id_button) ;
-			   document.getElementById(id_button).className = "animated fadeOut";
+			   document.getElementById(id_button).className = "animated fadeOutUp";
 
 			   
 
